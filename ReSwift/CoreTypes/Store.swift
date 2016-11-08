@@ -15,7 +15,7 @@ import Foundation
  reducers you can combine them by initializng a `MainReducer` with all of your reducers as an
  argument.
  */
-public class Store<State: StateType>: StoreType {
+open class Store<State: StateType>: StoreType {
 
     typealias SubscriptionType = Subscription<State>
 
@@ -162,7 +162,7 @@ public class Store<State: StateType>: StoreType {
 
     #if swift(>=3)
     @discardableResult
-    public func dispatch(_ action: Action) -> Any {
+    open func dispatch(_ action: Action) -> Any {
         let returnValue = dispatchFunction(action)
 
         return returnValue
@@ -177,7 +177,7 @@ public class Store<State: StateType>: StoreType {
 
     #if swift(>=3)
     @discardableResult
-    public func dispatch(_ actionCreatorProvider: @escaping ActionCreator) -> Any {
+    open func dispatch(_ actionCreatorProvider: @escaping ActionCreator) -> Any {
         let action = actionCreatorProvider(state, self)
 
         if let action = action {
